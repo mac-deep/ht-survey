@@ -1,0 +1,13 @@
+{
+  "name": "ht-survey",
+  "version": "1.0.0",
+  "description": "Dockerized environment with a database, a back-end and a front-end application.",
+  "scripts": {
+    "build:back": "docker-compose build ht-backend",
+    "start:db": "docker-compose up ht-database",
+    "start:back": "docker-compose up ht-backend",
+    "clean": "docker-compose down -v"
+  },
+  "author": "",
+  "license": "ISC"
+}

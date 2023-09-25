@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { BadRequestException, Logger, ValidationPipe } from '@nestjs/common';
 
+declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const logger = new Logger();
@@ -27,5 +29,10 @@ async function bootstrap() {
 
   await app.listen(5000);
   logger.debug(`⚡ App is running on: ${await app.getUrl()}`);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 }
 bootstrap();

@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  ht-database:
+    container_name: ht-database
+    image: postgres:14
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    ports:
+      - $POSTGRES_LOCAL_PORT:$POSTGRES_DOCKER_PORT
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./ht-database:/docker-entrypoint-initdb.d/
+    networks:
+      - default
+
+  ht-backend:
+    container_name: ht-backend
+    build: ./ht-backend
+    depends_on:
+      - ht-database
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $SERVER_APP_LOCAL_PORT:$SERVER_APP_DOCKER_PORT
+    environment:
+      - DB_HOST=$POSTGRES_HOST
+      - DB_USER=$POSTGRES_USER
+      - DB_PASSWORD=$POSTGRES_PASSWORD
+      - DB_DATABASE=$POSTGRES_DB
+      - DB_PORT=$POSTGRES_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./ht-backend:/app
+      - /app/node_modules
+    networks:
+      - default
+
+  # ht-frontend:
+  #   container_name: ht-frontend
+  #   depends_on:
+  #     - ht-backend
+  #   build:
+  #     context: ./ht-frontend
+  #     dockerfile: Dockerfile
+  #   restart: unless-stopped
+  #   env_file: ./.env
+  #   ports:
+  #     - $WEB_APP_LOCAL_PORT:$WEB_APP_DOCKER_PORT
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - ./ht-frontend:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   networks:
+  #     - default
+
+volumes:
+  pgdata: {}
