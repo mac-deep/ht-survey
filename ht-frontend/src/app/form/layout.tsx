@@ -15,7 +15,7 @@ export default function Layout(props: {
   const username = searchParams.get('username');
 
   const usernameAvailabe = async (value: string) => {
-    const res = await fetch(`${API_URL}users/available?username=${value}`);
+    const res = await fetch(`${API_URL}/users/available?username=${value}`);
     const result: Response<boolean> = await res.json();
 
     setIsNew(result.data);
