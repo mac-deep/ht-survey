@@ -20,7 +20,8 @@ export default function NewFormPage() {
       setErrors(message);
     }
 
-    if (statusCode === 200) {
+    if (statusCode === 201) {
+      setErrors(null);
       router.push(`/result?form=new`);
     }
   };

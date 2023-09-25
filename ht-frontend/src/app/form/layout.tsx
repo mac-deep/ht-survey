@@ -1,7 +1,7 @@
 'use client';
 
-import { API_URL } from '@/src/api';
-import { Response } from '@/src/types/response.types';
+import { API_URL } from '@/api';
+import { Response } from '@/types/response.types';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 

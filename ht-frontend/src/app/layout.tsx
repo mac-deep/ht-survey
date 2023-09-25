@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} relative min-h-screen bg-neutral-100 `}
       >
-        <h2 className="text-center pt-16 pb-12 text-lg lg:text-5xl font-serif">
+        <h2 className="text-center pt-16 pb-12 text-5xl font-serif">
           Survery Form
         </h2>
         <main className="flex flex-col items-center justify-between md:mx-auto mx-4 md:w-auto md:max-w-md card bg-white shadow-lg p-4 lg:p-8">
