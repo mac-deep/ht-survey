@@ -1,8 +1,8 @@
 'use client';
 
-import Form from '@/src/components/Form';
-import { useCreateUser, useFetchUser } from '@/src/hooks/useUsers';
-import { TUserPayload } from '@/src/types/user.types';
+import Form from '@/components/Form';
+import { useCreateUser, useFetchUser } from '@/hooks/useUsers';
+import { TUserPayload } from '@/types/user.types';
 import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 

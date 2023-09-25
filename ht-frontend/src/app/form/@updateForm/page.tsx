@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Form from '@/src/components/Form';
-import { useFetchUser, useUpdateUser } from '@/src/hooks/useUsers';
-import { TUserPayload } from '@/src/types/user.types';
+import Form from '@/components/Form';
+import { useFetchUser, useUpdateUser } from '@/hooks/useUsers';
+import { TUserPayload } from '@/types/user.types';
 
 export default function UpdateFormPage({}) {
   const router = useRouter();

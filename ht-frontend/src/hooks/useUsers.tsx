@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { TUser, TUserPayload } from '../types/user.types';
-import { Response } from '../types/response.types';
-import { API_URL } from '../api';
+import { TUser, TUserPayload } from '@/types/user.types';
+import { Response } from '@/types/response.types';
+import { API_URL } from '@/api';
 
 export function useFetchUser(username: string | null | undefined) {
   const [data, setData] = useState<TUser>();
