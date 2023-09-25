@@ -4,8 +4,10 @@
   "description": "Dockerized environment with a database, a back-end and a front-end application.",
   "scripts": {
     "build:back": "docker-compose build ht-backend",
+    "build:front": "docker-compose build ht-frontend",
     "start:db": "docker-compose up ht-database",
     "start:back": "docker-compose up ht-backend",
+    "start:front": "docker-compose up ht-frontend",
     "clean": "docker-compose down -v"
   },
   "author": "",

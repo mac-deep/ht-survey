@@ -40,25 +40,24 @@ services:
     networks:
       - default
 
-  # ht-frontend:
-  #   container_name: ht-frontend
-  #   depends_on:
-  #     - ht-backend
-  #   build:
-  #     context: ./ht-frontend
-  #     dockerfile: Dockerfile
-  #   restart: unless-stopped
-  #   env_file: ./.env
-  #   ports:
-  #     - $WEB_APP_LOCAL_PORT:$WEB_APP_DOCKER_PORT
-  #   stdin_open: true
-  #   tty: true
-  #   volumes:
-  #     - ./ht-frontend:/app
-  #     - /app/node_modules
-  #     - /app/.next
-  #   networks:
-  #     - default
+  ht-frontend:
+    container_name: ht-frontend
+    depends_on:
+      - ht-backend
+    build:
+      context: ./ht-frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $WEB_APP_LOCAL_PORT:$WEB_APP_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./ht-frontend:/app
+      - /app/node_modules
+    networks:
+      - default
 
 volumes:
   pgdata: {}
