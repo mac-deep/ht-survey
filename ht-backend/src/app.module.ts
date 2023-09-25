@@ -24,12 +24,11 @@ import { DataSource } from 'typeorm';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_DATABASE'),
         entities: [User],
-        synchronize: false,
+        synchronize: true,
       }),
     }),
   ],
 })
-
 export class AppModule {
   constructor(private dataSource: DataSource) {}
 }

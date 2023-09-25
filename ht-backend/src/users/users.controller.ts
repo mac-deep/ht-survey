@@ -29,6 +29,7 @@ export class UsersController {
 
   @Post()
   @UsePipes(new ValidationPipe())
+  @UseInterceptors(TransformationInterceptor<User>)
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -52,6 +53,7 @@ export class UsersController {
   }
 
   @Patch(':username')
+  @UsePipes(new ValidationPipe())
   @UseInterceptors(TransformationInterceptor<User>)
   update(
     @Param('username') username: string,
